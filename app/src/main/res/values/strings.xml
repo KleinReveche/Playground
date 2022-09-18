@@ -1,0 +1,118 @@
+<resources>
+    <string name="app_name">K\'s Playground</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="age_calc_legacy">Age Calculator Legacy</string>
+    <string name="app_calc_datepicker_title">Select Your Birthdate</string>
+    <string name="age_calc">Age Calculator</string>string>
+    <string name="age_calc_title">Calculate Your Age</string>
+    <string name="age_calc_datepicker">Select Date</string>
+    <string name="age_calc_time_included">Time Included</string>
+    <string name="age_calc_selected_date">Selected Date</string>
+    <string name="age_in_minutes">Age in Minutes</string>
+    <string name="age_in_hours">Age in Hours</string>
+    <string name="age_in_days">Age in Days</string>
+
+
+    <string name="dice_roller">Dice Roller</string>
+    <string name="roll_label">Roll</string>
+
+
+    <string name="dessert_clicker">Dessert Clicker</string>
+    <string name="dollar_sign">$</string>
+    <string name="zero">0</string>
+    <string name="dessert_sold">Desserts Sold</string>
+    <string name="total_revenue">Total Revenue</string>
+    <string name="share_text">I\'ve clicked %1$d Desserts for a total of %2$d$ #AndroidDessertClicker</string>
+    <string name="share">Share</string>
+    <string name="sharing_not_available">Sharing Not Available</string>
+
+    <string name="cupcakes">Cupcake Shop</string>
+    <string name="order_cupcakes">Order Cupcakes</string>
+    <string name="one_cupcake">One Cupcake</string>
+    <string name="six_cupcakes">Six Cupcakes</string>
+    <string name="twelve_cupcakes">Twelve Cupcakes</string>
+    <string name="choose_flavor">Choose Flavor</string>
+    <string name="vanilla">Vanilla</string>
+    <string name="chocolate">Chocolate</string>
+    <string name="red_velvet">Red Velvet</string>
+    <string name="salted_caramel">Salted Caramel</string>
+    <string name="coffee">Coffee</string>
+    <string name="special_flavor">Special Flavor</string>
+    <string name="cancel">Cancel</string>
+    <string name="choose_pickup_date">Choose Pickup Date</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="send">Send Order to Another App</string>
+    <string name="quantity">Quantity</string>
+    <string name="flavor">Flavor</string>
+    <string name="pickup_date">Pickup date</string>
+    <string name="subtotal_price">Subtotal %s</string>
+    <string name="total_price">Total %s</string>
+    <string name="new_cupcake_order">New Cupcake Order</string>
+    <string name="order_details">Quantity: %1$s \n Flavor: %2$s \nPickup date: %3$s \n
+        Total: %4$s \n\n Thank you!</string>
+    <string name="back_button">Back</string>
+    <plurals name="cupcakes">
+        <item quantity="one">%d cupcake</item>
+        <item quantity="other">%d cupcakes</item>
+    </plurals>
+
+    <string name="cafeteria">Cafeteria</string>
+    <string name="choose_accompaniment">Choose Accompaniment</string>
+    <string name="choose_entree">Choose Entree</string>
+    <string name="choose_side_dish">Choose Side Dish</string>
+    <string name="order_checkout">Order Checkout</string>
+    <string name="start_order">Start Order</string>
+    <string name="subtotal">Subtotal: %s</string>
+    <string name="tax">Tax: %s</string>
+    <string name="total">Total: %s</string>
+    <string name="submit">Submit</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet,
+    </string>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_compose_age_calculator">ComposeAgeCalculatorActivity</string>
+    <string name="title_activity_cupcake_store">CupcakeStoreActivity</string>
+    <string name="features">Features</string>
+
+    <string name="title_activity_notes">NotesActivity</string>
+    <string name="notes">Your Notes</string>
+    <string name="age_calc_list">Age Calculators</string>
+
+    <string name="lemonade">Lemonade</string>
+    <string name="lemon_select">Tap the lemon tree to select a lemon</string>
+    <string name="lemon_squeeze">Keep tapping the lemon to squeeze it</string>
+    <string name="lemon_drink">Tap the lemonade to drink it</string>
+    <string name="lemon_empty_glass">Tap the empty glass to start again</string>
+    <string name="lemon_tree_content_description">Lemon tree</string>
+    <string name="lemon_content_description">Lemon</string>
+    <string name="lemonade_content_description">Glass of lemonade</string>
+    <string name="empty_glass_content_description">Empty glass</string>
+
+
+    <string name="instructions">Unscramble the word using all the letters.</string>
+    <string name="skip">Skip</string>
+    <string name="score">Score: %d</string>
+    <string name="word_count">%d of 10 words</string>
+    <string name="enter_your_word">Enter your word</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="you_scored">"You scored: %d"</string>
+    <string name="exit">Exit</string>
+    <string name="play_again">Play Again</string>
+    <string name="wrong_guess">Wrong Guess!</string>
+    <string name="easter_egg_gingerbread">Gingerbread</string>
+    <string name="easter_egg_gingerbread_label">Zombie Art by Zac Larson</string>
+    <string name="easter_egg_honeycomb">Honeycomb</string>
+    <string name="easter_egg_honeycomb_label">REZZZZZZZ...</string>
+    <string name="android_easter_egg_label">Android Easter Eggs</string>
+    <string name="ext_storage_permission_not_granted">Read Ext Storage permission is needed</string>
+    <string name="ext_storage_permission_settings">Navigate to settings and enable the Storage permission</string>
+
+</resources>
