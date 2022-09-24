@@ -1,7 +1,6 @@
 package com.kleinreveche.playground.features.tictactoe.engine
 
 import java.util.*
-import kotlin.collections.ArrayList
 
 object GameUtils {
     const val PLAYER_X = "X" //player 1
@@ -104,9 +103,9 @@ object GameUtils {
      * */
     fun gameResult(board: ArrayList<String>, singleMode: Boolean): String {
         when {
-            isGameWon(board, PLAYER_X) -> return "${if (singleMode) "YOU" else "PLAYER X"} Won"
-            isGameWon(board, PLAYER_O) -> return "${if (singleMode) "COMPUTER" else "PLAYER O"} Won"
-            isBoardFull(board) -> return "It is Tie"
+            isGameWon(board, PLAYER_X) -> return "${if (singleMode) "You" else "Player X"} Won!"
+            isGameWon(board, PLAYER_O) -> return "${if (singleMode) "Computer" else "Player O"} Won!"
+            isBoardFull(board) -> return "It's a tie!"
         }
         return "Tie"
     }

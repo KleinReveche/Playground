@@ -3,25 +3,31 @@ package com.kleinreveche.playground.features.main.settings
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.*
+import androidx.compose.material.icons.outlined.ArrowBack
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Palette
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavController
 import com.kleinreveche.playground.R
-import com.kleinreveche.playground.core.helpers.Preferences
-import com.kleinreveche.playground.core.helpers.rememberBooleanPreference
-import com.kleinreveche.playground.features.main.settings.components.*
+import com.kleinreveche.playground.core.util.helpers.Preferences
+import com.kleinreveche.playground.core.util.helpers.rememberBooleanPreference
+import com.kleinreveche.playground.features.main.settings.components.SettingBooleanItem
+import com.kleinreveche.playground.features.main.settings.components.SettingItemCategory
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsScreen(){
+fun SettingsScreen(
+    navController: NavController
+){
     Scaffold(
         topBar = {
             LargeTopAppBar(
                 title = { Text(stringResource(R.string.settings)) },
                 navigationIcon = {
-                    IconButton(onClick = { TODO("NavController PopBackStack") }) {
+                    IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.Outlined.ArrowBack, null)
                     }
                 }

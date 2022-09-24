@@ -3,10 +3,11 @@ package com.kleinreveche.playground
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.viewModels
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.*
+import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
@@ -14,21 +15,17 @@ import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
-import androidx.lifecycle.observe
-import com.kleinreveche.playground.core.helpers.*
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.kleinreveche.playground.core.util.helpers.PreferenceHelper
+import com.kleinreveche.playground.core.util.helpers.Preferences
 import com.kleinreveche.playground.features.main.NavGraph
 import com.kleinreveche.playground.features.main.onboarding.OnboardingActivity
 import com.kleinreveche.playground.ui.theme.PlaygroundAppTheme
 import dagger.hilt.android.AndroidEntryPoint
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    /* public val mainVm by viewModels<MainActivityViewModel>() */
-
-    @OptIn(ExperimentalPagerApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, true)
@@ -36,7 +33,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             PlaygroundAppTheme {
 
-                // Remember a SystemUiController
                 val systemUiController = rememberSystemUiController()
                 val useDarkIcons = MaterialTheme.colorScheme.isLight()
                 val systemBarColor = MaterialTheme.colorScheme.surface
@@ -46,22 +42,14 @@ class MainActivity : ComponentActivity() {
                         color = systemBarColor,
                         darkIcons = useDarkIcons
                     )
-                    /*
-		    if(isOnboardingDone == false) 
-                        mainVm.saveOnboardingProgress(false)
-                    mainVm.getOnboardingProgress.observe(this){
-                        isOnboardingDone = it
-                    }
-                    */
                     
                 }
 
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val isBoardingDone = PreferenceHelper.get(Preferences.IS_ONBOARDING_DONE, false)
+                    val isBoardingDone = PreferenceHelper[Preferences.IS_ONBOARDING_DONE, false]
                     if(isBoardingDone as Boolean) {
                         NavGraph()
                     } else {

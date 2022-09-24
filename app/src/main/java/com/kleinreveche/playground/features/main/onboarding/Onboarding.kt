@@ -2,7 +2,6 @@ package com.kleinreveche.playground.features.main.onboarding
 
 import android.app.Activity
 import android.content.Intent
-import androidx.activity.viewModels
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring
@@ -33,10 +32,8 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.kleinreveche.playground.MainActivity
-import com.kleinreveche.playground.Playground
-import com.kleinreveche.playground.core.MainActivityViewModel
-import com.kleinreveche.playground.core.helpers.*
-import com.kleinreveche.playground.features.main.NavGraph
+import com.kleinreveche.playground.core.util.helpers.PreferenceHelper
+import com.kleinreveche.playground.core.util.helpers.Preferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

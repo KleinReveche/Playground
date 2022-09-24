@@ -3,7 +3,6 @@ package com.kleinreveche.playground.features.notes.domain.use_case
 import com.kleinreveche.playground.features.notes.domain.model.InvalidNoteException
 import com.kleinreveche.playground.features.notes.domain.model.Note
 import com.kleinreveche.playground.features.notes.domain.repository.NoteRepository
-import kotlin.jvm.Throws
 
 class AddNote (
     private val repository: NoteRepository

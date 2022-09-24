@@ -58,6 +58,13 @@ val UnscrambleFeature = Features(
     date = "09/02/2022"
 )
 
+val TicTacToeFeature = Features(
+    id = 7,
+    name = "Tic Tac Toe",
+    artifact = "$basePackage.features.tictactoe",
+    date = "09/24/2022"
+)
+
 val FeatureList = listOf(
     DiceRollerFeature,
     DessertClickerFeature,
@@ -65,6 +72,7 @@ val FeatureList = listOf(
     CafeteriaFeature,
     NotesFeature,
     LemonadeFeature,
-    UnscrambleFeature
+    UnscrambleFeature,
+    TicTacToeFeature
     )
 

@@ -43,7 +43,7 @@ fun CupcakeAppBar(
     navigateUp: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    SmallTopAppBar(
+    TopAppBar(
         title = { Text(stringResource(currentScreen.title)) },
         modifier = modifier,
         navigationIcon = {

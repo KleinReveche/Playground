@@ -11,6 +11,8 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.kleinreveche.playground.core.util.helpers.PreferenceHelper
+import com.kleinreveche.playground.core.util.helpers.Preferences
 
 private val DarkColorScheme = darkColorScheme(
     primary = PrimaryDark,
@@ -40,9 +42,10 @@ fun PlaygroundAppTheme(
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-
+    val isBoardingDone = PreferenceHelper[Preferences.MATERIAL_YOU, true]
     val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+
+        isBoardingDone as Boolean && dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }

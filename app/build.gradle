@@ -6,14 +6,6 @@ plugins {
 }
 
 android {
-    signingConfigs {
-        debug {
-            storeFile file('/sdcard/Android Development/Release Keys/my-release-key.jks')
-            storePassword 'CdLhfDwfsRRvpGMeUHwVkiNPE7fzcShFDmcswzxDGuYyZLNM7jDgiGCVUKeAogAimjSwrh6repAmkB44qBsLwBtNfbbiioxdwBtwwZq669WiPbm6pYumkg22ZonsWNoe'
-            keyPassword 'CdLhfDwfsRRvpGMeUHwVkiNPE7fzcShFDmcswzxDGuYyZLNM7jDgiGCVUKeAogAimjSwrh6repAmkB44qBsLwBtNfbbiioxdwBtwwZq669WiPbm6pYumkg22ZonsWNoe'
-            keyAlias 'KleinReveche'
-        }
-    }
     buildToolsVersion "33.0.0"
     compileSdk 33
 
@@ -72,10 +64,10 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
 
     implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material3:material3:1.0.0-beta02"
+    implementation 'androidx.compose.material3:material3:1.0.0-beta03'
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
-    implementation 'androidx.activity:activity-compose:1.5.1'
+    implementation 'androidx.activity:activity-compose:1.6.0'
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
     // Test dependencies
@@ -97,8 +89,8 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 
     // Dagger - Hilt
-    implementation "com.google.dagger:hilt-android:2.38.1"
-    kapt "com.google.dagger:hilt-android-compiler:2.37"
+    implementation 'com.google.dagger:hilt-android:2.44'
+    kapt 'com.google.dagger:hilt-android-compiler:2.44'
     kapt "androidx.hilt:hilt-compiler:1.0.0"
 
     // Room
@@ -115,7 +107,7 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:5.0.1'
 
     // Accompanist Pager for Onboarding
-    implementation 'com.google.accompanist:accompanist-pager:0.26.3-beta' 
+    implementation 'com.google.accompanist:accompanist-pager:0.26.4-beta'
 
     // DataStore Preferences
     implementation 'androidx.datastore:datastore-preferences:1.0.0'

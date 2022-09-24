@@ -2,9 +2,7 @@ package com.kleinreveche.playground.features.cafeteria.ui
 
 import androidx.lifecycle.ViewModel
 import com.kleinreveche.playground.features.cafeteria.model.MenuItem
-import com.kleinreveche.playground.features.cafeteria.model.MenuItem.AccompanimentItem
-import com.kleinreveche.playground.features.cafeteria.model.MenuItem.EntreeItem
-import com.kleinreveche.playground.features.cafeteria.model.MenuItem.SideDishItem
+import com.kleinreveche.playground.features.cafeteria.model.MenuItem.*
 import com.kleinreveche.playground.features.cafeteria.model.OrderUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

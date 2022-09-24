@@ -1,8 +1,6 @@
 package com.kleinreveche.playground.features.cafeteria.datasource
 
-import com.kleinreveche.playground.features.cafeteria.model.MenuItem.AccompanimentItem
-import com.kleinreveche.playground.features.cafeteria.model.MenuItem.EntreeItem
-import com.kleinreveche.playground.features.cafeteria.model.MenuItem.SideDishItem
+import com.kleinreveche.playground.features.cafeteria.model.MenuItem.*
 
 /**
  * Map of available menu items to be displayed in the menu fragments.

@@ -5,10 +5,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Sort
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -35,6 +35,7 @@ fun NotesScreen(
     val snackbarHostState = remember { SnackbarHostState() }
 
     Scaffold(
+        snackbarHost = { SnackbarHost(snackbarHostState) },
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
@@ -45,7 +46,7 @@ fun NotesScreen(
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Add Note")
             }
         }
-    ) {it -> it.calculateBottomPadding()
+    ) { it -> it.calculateBottomPadding()
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -107,8 +108,10 @@ fun NotesScreen(
                                     message = "Note Deleted",
                                     actionLabel = "Undo"
                                 )
-                                if(result == SnackbarResult.ActionPerformed) {
-                                    viewModel.onEvent(NotesEvent.RestoreNote)
+
+                                when (result) {
+                                    SnackbarResult.Dismissed -> TODO()
+                                    SnackbarResult.ActionPerformed -> viewModel.onEvent(NotesEvent.RestoreNote)
                                 }
                             }
                         }
