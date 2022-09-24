@@ -1,7 +1,9 @@
 package com.kleinreveche.playground
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.viewModels
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.*
@@ -9,19 +11,28 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.luminance
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.observe
+import com.kleinreveche.playground.core.helpers.*
 import com.kleinreveche.playground.features.main.NavGraph
+import com.kleinreveche.playground.features.main.onboarding.OnboardingActivity
 import com.kleinreveche.playground.ui.theme.PlaygroundAppTheme
 import dagger.hilt.android.AndroidEntryPoint
+import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    /* public val mainVm by viewModels<MainActivityViewModel>() */
+
+    @OptIn(ExperimentalPagerApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-
+        WindowCompat.setDecorFitsSystemWindows(window, true)
+        
         setContent {
             PlaygroundAppTheme {
 
@@ -29,16 +40,20 @@ class MainActivity : ComponentActivity() {
                 val systemUiController = rememberSystemUiController()
                 val useDarkIcons = MaterialTheme.colorScheme.isLight()
                 val systemBarColor = MaterialTheme.colorScheme.surface
-
+               
                 SideEffect {
-                    // Update all of the system bar colors to be transparent, and use
-                    // dark icons if we're in light theme
                     systemUiController.setSystemBarsColor(
                         color = systemBarColor,
                         darkIcons = useDarkIcons
                     )
-
-                    // setStatusBarsColor() and setNavigationBarsColor() also exist
+                    /*
+		    if(isOnboardingDone == false) 
+                        mainVm.saveOnboardingProgress(false)
+                    mainVm.getOnboardingProgress.observe(this){
+                        isOnboardingDone = it
+                    }
+                    */
+                    
                 }
 
                 // A surface container using the 'background' color from the theme
@@ -46,7 +61,14 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    NavGraph()
+                    val isBoardingDone = PreferenceHelper.get(Preferences.IS_ONBOARDING_DONE, false)
+                    if(isBoardingDone as Boolean) {
+                        NavGraph()
+                    } else {
+                        val context = LocalContext.current
+                        context.startActivity(Intent(context, OnboardingActivity::class.java))
+                        finish()
+                    }
                 }
 
             }

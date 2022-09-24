@@ -6,6 +6,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('/sdcard/Android Development/Release Keys/my-release-key.jks')
+            storePassword 'CdLhfDwfsRRvpGMeUHwVkiNPE7fzcShFDmcswzxDGuYyZLNM7jDgiGCVUKeAogAimjSwrh6repAmkB44qBsLwBtNfbbiioxdwBtwwZq669WiPbm6pYumkg22ZonsWNoe'
+            keyPassword 'CdLhfDwfsRRvpGMeUHwVkiNPE7fzcShFDmcswzxDGuYyZLNM7jDgiGCVUKeAogAimjSwrh6repAmkB44qBsLwBtNfbbiioxdwBtwwZq669WiPbm6pYumkg22ZonsWNoe'
+            keyAlias 'KleinReveche'
+        }
+    }
     buildToolsVersion "33.0.0"
     compileSdk 33
 

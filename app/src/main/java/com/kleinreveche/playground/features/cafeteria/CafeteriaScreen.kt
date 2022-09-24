@@ -17,7 +17,12 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.kleinreveche.playground.R
 import com.kleinreveche.playground.features.cafeteria.datasource.DataSource
-import com.kleinreveche.playground.features.cafeteria.presentation.*
+import com.kleinreveche.playground.features.cafeteria.ui.AccompanimentMenuScreen
+import com.kleinreveche.playground.features.cafeteria.ui.CheckoutScreen
+import com.kleinreveche.playground.features.cafeteria.ui.EntreeMenuScreen
+import com.kleinreveche.playground.features.cafeteria.ui.OrderViewModel
+import com.kleinreveche.playground.features.cafeteria.ui.SideDishMenuScreen
+import com.kleinreveche.playground.features.cafeteria.ui.StartOrderScreen
 
 enum class CafeteriaScreen(@StringRes val title: Int) {
     Start(title = R.string.cafeteria),
@@ -38,7 +43,7 @@ fun CafeteriaAppBar(
     navigateUp: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    SmallTopAppBar(
+    TopAppBar(
         title = { Text(stringResource(currentScreenTitle)) },
         modifier = modifier,
         navigationIcon = {

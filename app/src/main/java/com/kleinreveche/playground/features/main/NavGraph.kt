@@ -1,11 +1,15 @@
 package com.kleinreveche.playground.features.main
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.kleinreveche.playground.features.cafeteria.CafeteriaApp
-import com.kleinreveche.playground.features.cafeteria.CafeteriaFeatureRoute
+import com.kleinreveche.playground.features.main.settings.SettingsScreen
+import com.kleinreveche.playground.features.main.settings.SettingsRoute
+import com.kleinreveche.playground.features.main.ui.feature_lists.age_calculator.AgeCalculatorListNavGraph
+import com.kleinreveche.playground.features.main.ui.feature_lists.age_calculator.AgeCalculatorsFeatureListRoute
+import com.kleinreveche.playground.features.main.ui.feature_lists.age_calculator.AgeCalculatorFeatureRoute
 import com.kleinreveche.playground.features.cupcake.CupcakeApp
 import com.kleinreveche.playground.features.cupcake.CupcakeFeatureRoute
 import com.kleinreveche.playground.features.dessert.DessertClickerApp
@@ -13,26 +17,34 @@ import com.kleinreveche.playground.features.dessert.DessertClickerFeatureRoute
 import com.kleinreveche.playground.features.dessert.data.Datasource
 import com.kleinreveche.playground.features.dice.DiceRollerApp
 import com.kleinreveche.playground.features.dice.DiceRollerFeatureRoute
-import com.kleinreveche.playground.features.lemonade.LemonApp
-import com.kleinreveche.playground.features.lemonade.LemonadeFeatureRoute
+import com.kleinreveche.playground.features.cafeteria.CafeteriaApp
+import com.kleinreveche.playground.features.cafeteria.CafeteriaFeatureRoute
 import com.kleinreveche.playground.features.main.model.*
-import com.kleinreveche.playground.features.main.presentation.age_calculator.AgeCalculatorListRoute
-import com.kleinreveche.playground.features.main.presentation.age_calculator.AgeCalculatorNavGraph
-import com.kleinreveche.playground.features.main.presentation.android_easter_egg.AndroidEasterEggListRoute
-import com.kleinreveche.playground.features.main.presentation.android_easter_egg.AndroidEasterEggNavGraph
-import com.kleinreveche.playground.features.main.presentation.main.MainList
+import com.kleinreveche.playground.features.main.ui.Feature
 import com.kleinreveche.playground.features.notes.NotesApp
 import com.kleinreveche.playground.features.notes.NotesFeatureRoute
+import com.kleinreveche.playground.features.lemonade.LemonApp
+import com.kleinreveche.playground.features.lemonade.LemonadeFeatureRoute
+import com.kleinreveche.playground.features.unscramble.ui.UnscrambleGameScreen
+import com.kleinreveche.playground.features.unscramble.ui.UnscrambleFeatureRoute
 
 @Composable
 fun NavGraph() {
+
     val navController = rememberNavController()
+
     NavHost(
         navController = navController,
         startDestination = FeatureRoute
     ) {
         composable(FeatureRoute) {
-            MainList(
+            Feature(
+                featureLists = FeatureListsOf,
+                onFeatureListClick = { featureList ->
+                    when (featureList) {
+                        AgeCalculatorsFeatureList -> navController.navigate(AgeCalculatorsFeatureListRoute)
+                    }
+                },
                 features = FeatureList,
                 onFeatureClick = { feature ->
                     when (feature) {
@@ -42,30 +54,24 @@ fun NavGraph() {
                         CafeteriaFeature -> navController.navigate(CafeteriaFeatureRoute)
                         NotesFeature -> navController.navigate(NotesFeatureRoute)
                         LemonadeFeature -> navController.navigate(LemonadeFeatureRoute)
-
+                        UnscrambleFeature -> navController.navigate(UnscrambleFeatureRoute)
                         else -> throw IllegalArgumentException("Unknown Feature")
                     }
                 },
-                featureLists = FeatureListsOf,
-                onFeatureListClick = { featureList ->
-                    when (featureList) {
-                        AgeCalculatorsList -> navController.navigate(AgeCalculatorListRoute)
-                        AndroidEasterEggList -> navController.navigate(AndroidEasterEggListRoute)
-
-                        else -> throw IllegalArgumentException("Unknown Feature List")
-                    }
-                }
+                onClick = { navController.navigate(SettingsRoute) }
             )
+
         }
-        composable(AgeCalculatorListRoute) { AgeCalculatorNavGraph() }
-        composable(AndroidEasterEggListRoute) { AndroidEasterEggNavGraph() }
+        composable(AgeCalculatorsFeatureListRoute) { AgeCalculatorListNavGraph() }
         composable(DiceRollerFeatureRoute) { DiceRollerApp() }
         composable(DessertClickerFeatureRoute) { DessertClickerApp(desserts = Datasource.dessertList) }
         composable(CupcakeFeatureRoute) { CupcakeApp() }
         composable(CafeteriaFeatureRoute) { CafeteriaApp() }
         composable(NotesFeatureRoute) { NotesApp() }
         composable(LemonadeFeatureRoute) { LemonApp() }
+        composable(UnscrambleFeatureRoute) { UnscrambleGameScreen() }
+        composable(SettingsRoute) { SettingsScreen() }
     }
 }
 
-const val FeatureRoute = "feature"
+private const val FeatureRoute = "feature"

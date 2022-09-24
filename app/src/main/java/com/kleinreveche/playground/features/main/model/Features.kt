@@ -51,12 +51,20 @@ val LemonadeFeature = Features(
     date = "09/01/2022"
 )
 
+val UnscrambleFeature = Features(
+    id = 7,
+    name = "Unscramble",
+    artifact = "$basePackage.features.unscramble",
+    date = "09/02/2022"
+)
+
 val FeatureList = listOf(
     DiceRollerFeature,
     DessertClickerFeature,
     CupcakeFeature,
     CafeteriaFeature,
     NotesFeature,
-    LemonadeFeature
+    LemonadeFeature,
+    UnscrambleFeature
     )
 

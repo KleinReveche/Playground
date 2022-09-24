@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.kleinreveche.playground">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name="com.kleinreveche.playground.PlaygroundApp"
+        android:name="com.kleinreveche.playground.Playground"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -81,7 +80,7 @@
         </activity>
         <activity
             android:name="com.kleinreveche.playground.features.notes.NotesActivity"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/title_activity_notes"
             android:theme="@style/Theme.Playground" >
             <intent-filter>
@@ -98,18 +97,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.kleinreveche.playground.features.android_easter_eggs.gingerbread.GPlatLogoActivity"
+            android:name="com.kleinreveche.playground.features.main.onboarding.OnboardingActivity"
             android:exported="true"
-            android:label="@string/easter_egg_gingerbread"
+            android:label="@string/onboarding"
             android:theme="@style/Theme.Playground">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.kleinreveche.playground.features.android_easter_eggs.honeycomb.HPlatLogoActivity"
+            android:name="com.kleinreveche.playground.features.tictactoe.TicTacToeActivity"
             android:exported="true"
-            android:label="@string/easter_egg_honeycomb"
+            android:label="@string/tictactoe"
             android:theme="@style/Theme.Playground">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />

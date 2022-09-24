@@ -4,23 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_bg"
     android:orientation="vertical"
+    android:background="@drawable/ic_bg"
     android:paddingTop="80dp"
-    tools:context=".features.age_calculator.AgeCalculatorLegacyActivity">
+    tools:context=".features.age_calculator.AgeCalculatorLegacyActivity"
+    >
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="50dp"
         android:background="?attr/colorPrimaryContainer"
         android:gravity="center"
         app:cardCornerRadius="8dp"
         app:cardElevation="5dp">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -1,6 +1,8 @@
 package com.kleinreveche.playground.features.cafeteria.datasource
 
-import com.kleinreveche.playground.features.cafeteria.model.MenuItem.*
+import com.kleinreveche.playground.features.cafeteria.model.MenuItem.AccompanimentItem
+import com.kleinreveche.playground.features.cafeteria.model.MenuItem.EntreeItem
+import com.kleinreveche.playground.features.cafeteria.model.MenuItem.SideDishItem
 
 /**
  * Map of available menu items to be displayed in the menu fragments.
@@ -38,7 +40,7 @@ object DataSource {
     )
 
     val sideDishMenuItems = listOf(
-        SideDishItem(
+       SideDishItem(
             name = "Rice",
             description = "Plain White Jasmine Rice",
             price = 2.50,

@@ -6,9 +6,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.kleinreveche.playground.features.notes.presentation.edit_note.AddEditNoteScreen
-import com.kleinreveche.playground.features.notes.presentation.notes.NotesScreen
-import com.kleinreveche.playground.features.notes.presentation.util.NotesScreen
+import com.kleinreveche.playground.features.notes.ui.edit_note.AddEditNoteScreen
+import com.kleinreveche.playground.features.notes.ui.notes.NotesScreen
+import com.kleinreveche.playground.features.notes.ui.util.NotesScreen
 
 @Composable
 fun NotesApp(){

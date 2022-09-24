@@ -1,12 +1,24 @@
 <resources>
-    <string name="app_name">K\'s Playground</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+
+    <!-- Playground App-->
+    <string name="app_name">Playground</string>
+
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_material_you">Material You</string>
+    <string name="settings_material_you_description">Enables Android 12+ Material You Theming</string>
+    <string name="settings_onboarding">Onboarding Experience</string>
+    <string name="settings_onboarding_description">Wish to experience the Onboarding Screen again?</string>
+    <string name="settings_misc">Miscellaneous</string>
+
+    <!-- Navigation -->
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="cancel">Cancel</string>
+    <string name="submit">Submit</string>
 
+    <!-- Age Calculators -->
     <string name="age_calc_legacy">Age Calculator Legacy</string>
     <string name="app_calc_datepicker_title">Select Your Birthdate</string>
     <string name="age_calc">Age Calculator</string>string>
@@ -18,11 +30,11 @@
     <string name="age_in_hours">Age in Hours</string>
     <string name="age_in_days">Age in Days</string>
 
-
+    <!-- Dice Roller -->
     <string name="dice_roller">Dice Roller</string>
     <string name="roll_label">Roll</string>
 
-
+    <!-- Dessert Clicker -->
     <string name="dessert_clicker">Dessert Clicker</string>
     <string name="dollar_sign">$</string>
     <string name="zero">0</string>
@@ -32,6 +44,7 @@
     <string name="share">Share</string>
     <string name="sharing_not_available">Sharing Not Available</string>
 
+    <!-- Cupcake Shop -->
     <string name="cupcakes">Cupcake Shop</string>
     <string name="order_cupcakes">Order Cupcakes</string>
     <string name="one_cupcake">One Cupcake</string>
@@ -44,7 +57,6 @@
     <string name="salted_caramel">Salted Caramel</string>
     <string name="coffee">Coffee</string>
     <string name="special_flavor">Special Flavor</string>
-    <string name="cancel">Cancel</string>
     <string name="choose_pickup_date">Choose Pickup Date</string>
     <string name="order_summary">Order Summary</string>
     <string name="send">Send Order to Another App</string>
@@ -62,6 +74,7 @@
         <item quantity="other">%d cupcakes</item>
     </plurals>
 
+    <!-- Cafeteria -->
     <string name="cafeteria">Cafeteria</string>
     <string name="choose_accompaniment">Choose Accompaniment</string>
     <string name="choose_entree">Choose Entree</string>
@@ -71,21 +84,19 @@
     <string name="subtotal">Subtotal: %s</string>
     <string name="tax">Tax: %s</string>
     <string name="total">Total: %s</string>
-    <string name="submit">Submit</string>
-
-    <string name="lorem_ipsum">
-        Lorem ipsum dolor sit amet,
-    </string>
-
+   
+    <!-- Main Activity -->    
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_compose_age_calculator">ComposeAgeCalculatorActivity</string>
     <string name="title_activity_cupcake_store">CupcakeStoreActivity</string>
     <string name="features">Features</string>
 
+    <!-- Notes -->
     <string name="title_activity_notes">NotesActivity</string>
     <string name="notes">Your Notes</string>
     <string name="age_calc_list">Age Calculators</string>
 
+    <!-- Lemonade -->
     <string name="lemonade">Lemonade</string>
     <string name="lemon_select">Tap the lemon tree to select a lemon</string>
     <string name="lemon_squeeze">Keep tapping the lemon to squeeze it</string>
@@ -96,7 +107,7 @@
     <string name="lemonade_content_description">Glass of lemonade</string>
     <string name="empty_glass_content_description">Empty glass</string>
 
-
+    <!-- Unscramble Game -->
     <string name="instructions">Unscramble the word using all the letters.</string>
     <string name="skip">Skip</string>
     <string name="score">Score: %d</string>
@@ -107,12 +118,16 @@
     <string name="exit">Exit</string>
     <string name="play_again">Play Again</string>
     <string name="wrong_guess">Wrong Guess!</string>
-    <string name="easter_egg_gingerbread">Gingerbread</string>
-    <string name="easter_egg_gingerbread_label">Zombie Art by Zac Larson</string>
-    <string name="easter_egg_honeycomb">Honeycomb</string>
-    <string name="easter_egg_honeycomb_label">REZZZZZZZ...</string>
-    <string name="android_easter_egg_label">Android Easter Eggs</string>
-    <string name="ext_storage_permission_not_granted">Read Ext Storage permission is needed</string>
-    <string name="ext_storage_permission_settings">Navigate to settings and enable the Storage permission</string>
 
+    <!-- Onboarding Process -->
+    <string name="onboarding">Onboarding</string>
+    <string name="onboarding_title_1">Welcome to the Playground!</string>
+    <string name="onboarding_text_1">This is where I create various things, \n random ideas, and tutorials for \n new concepts</string>
+    <string name="onboarding_title_2">In the Bleeding Edge</string>
+    <string name="onboarding_text_2">This is where I experiment \n on new and upcoming \n apps or games</string>
+    <string name="onboarding_title_3">What\'s New?</string>
+    <string name="onboarding_text_3">• Release of the Playground App</string>
+
+    <!-- Tic Tac Toe -->
+    <string name="tictactoe">Tic Tac Toe</string>
 </resources>

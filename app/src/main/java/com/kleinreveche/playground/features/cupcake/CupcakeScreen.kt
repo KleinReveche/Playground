@@ -23,10 +23,10 @@ import com.kleinreveche.playground.R
 import com.kleinreveche.playground.features.cupcake.data.DataSource.flavors
 import com.kleinreveche.playground.features.cupcake.data.DataSource.quantityOptions
 import com.kleinreveche.playground.features.cupcake.data.OrderUiState
-import com.kleinreveche.playground.features.cupcake.presentation.OrderSummaryScreen
-import com.kleinreveche.playground.features.cupcake.presentation.OrderViewModel
-import com.kleinreveche.playground.features.cupcake.presentation.SelectOptionScreen
-import com.kleinreveche.playground.features.cupcake.presentation.StartOrderScreen
+import com.kleinreveche.playground.features.cupcake.ui.OrderSummaryScreen
+import com.kleinreveche.playground.features.cupcake.ui.OrderViewModel
+import com.kleinreveche.playground.features.cupcake.ui.SelectOptionScreen
+import com.kleinreveche.playground.features.cupcake.ui.StartOrderScreen
 
 enum class CupcakeScreen(@StringRes val title: Int) {
     Start(title = R.string.app_name),
