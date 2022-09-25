@@ -102,8 +102,8 @@ fun MenuItemRow(
 fun MenuScreenButtonGroup(
     selectedItemName: String,
     onCancelButtonClicked: () -> Unit,
-    onNextButtonClicked: () -> Unit,
-    modifier: Modifier = Modifier) {
+    onNextButtonClicked: () -> Unit
+) {
     Row (
         modifier = Modifier
             .fillMaxWidth()

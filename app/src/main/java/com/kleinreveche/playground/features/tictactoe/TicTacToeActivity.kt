@@ -6,13 +6,14 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import com.kleinreveche.playground.R
 import com.kleinreveche.playground.ui.theme.PlaygroundAppTheme
+import kotlinx.coroutines.launch
 
 class TicTacToeActivity : ComponentActivity() {
 
@@ -29,14 +30,17 @@ class TicTacToeActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TicTacToe(){
+    val snackbarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
+    val ticTacToeViewModel = TicTacToeViewModel()
 
-    val ticTacToeViewModel= TicTacToeViewModel()
-
-    Scaffold(topBar = {
+    Scaffold(
+        snackbarHost = { SnackbarHost(snackbarHostState) },
+        topBar = {
         TicTacAppBar(ticTacToeViewModel.singlePlayer) {
             ticTacToeViewModel.updatePlayerMode(it)
-        }
-    }) {
+        }}
+    ) {
         it.calculateBottomPadding()
         // A surface container using the 'background' color from the theme
         Surface(color = MaterialTheme.colorScheme.background) {
@@ -49,11 +53,20 @@ fun TicTacToe(){
 
                 if (ticTacToeViewModel.isGameOver) {
 
-                    GameOverAlertDialog(
-                        title = stringResource(R.string.gameover),
-                        message = ticTacToeViewModel.winner,
-                        condition = ticTacToeViewModel::reset,
-                    )
+                    LaunchedEffect(key1 = ticTacToeViewModel.isGameOver) {
+                        scope.launch {
+                            val result = snackbarHostState.showSnackbar(
+                                message = "Game-over: ${ticTacToeViewModel.winner}",
+                                actionLabel = "Restart",
+                                withDismissAction = false,
+                                duration = SnackbarDuration.Indefinite
+                            )
+                            when (result) {
+                                SnackbarResult.Dismissed -> TODO()
+                                SnackbarResult.ActionPerformed -> { ticTacToeViewModel.reset() }
+                            }
+                        }
+                    }
 
                     Box {
                         Text(

@@ -97,7 +97,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.kleinreveche.playground.features.main.onboarding.OnboardingActivity"
+            android:name="com.kleinreveche.playground.ui.onboarding.OnboardingActivity"
             android:exported="true"
             android:label="@string/onboarding"
             android:theme="@style/Theme.Playground">
