@@ -24,7 +24,6 @@ import com.kleinreveche.playground.R
 fun AgeCalculator(){
     val context = LocalContext.current
     val ageCalculatorViewModel = AgeCalculatorViewModel()
-    ageCalculatorViewModel.initVar()
     Box {
         Image(
             modifier = Modifier.fillMaxSize(),
@@ -63,17 +62,49 @@ fun AgeCalculator(){
                         )
                     } //DatePicker
                     Spacer(modifier = Modifier.height(20.dp))
-                    Text( text = ageCalculatorViewModel.selectedDate )  //selectedDate
-                    Text( text = stringResource(R.string.age_calc_selected_date) ) //selectedDateLabel
-                    Text( text = ageCalculatorViewModel.selectedDateInMinutes )  //ageInMinutesDate
+                    Text( 
+                        text = ageCalculatorViewModel.selectedDate,
+                        color = MaterialTheme.colorScheme.primary,                             
+                        fontSize = 20.sp
+                    )  //selectedDate
+                    Text( 
+                        text = stringResource(R.string.age_calc_selected_date),
+                        color = MaterialTheme.colorScheme.secondary,
+                        fontSize = 18.sp
+                    ) //selectedDateLabel
                     Spacer(modifier = Modifier.height(20.dp))
-                    Text( text = stringResource(R.string.age_in_minutes) ) //ageInMinutesDateLabel
+                    Text( 
+                        text = ageCalculatorViewModel.selectedDateInMinutes,
+                        color = MaterialTheme.colorScheme.primary,
+                        fontSize = 35.sp
+                     )  //ageInMinutesDate
+                    Text( 
+                        text = stringResource(R.string.age_in_minutes),
+                        color = MaterialTheme.colorScheme.secondary,
+                        fontSize = 18.sp
+                     ) //ageInMinutesDateLabel
                     Spacer(modifier = Modifier.height(20.dp))
-                    Text( text = ageCalculatorViewModel.selectedDateInHours )  //ageInHoursDate
-                    Text( text = stringResource(R.string.age_in_hours) ) //ageInHoursDateLabel
+                    Text( 
+                         text = ageCalculatorViewModel.selectedDateInHours,
+                        color = MaterialTheme.colorScheme.primary,
+                        fontSize = 35.sp
+                    )  //ageInHoursDate
+                    Text( 
+                        text = stringResource(R.string.age_in_hours),
+                        color = MaterialTheme.colorScheme.secondary,
+                        fontSize = 18.sp
+                    ) //ageInHoursDateLabel
                     Spacer(modifier = Modifier.height(20.dp))
-                    Text( text = ageCalculatorViewModel.selectedDateInDays )  //ageInDaysDate
-                    Text( text = stringResource(R.string.age_in_days) ) //ageInDaysDateLabel
+                    Text( 
+                         text = ageCalculatorViewModel.selectedDateInDays,
+                        color = MaterialTheme.colorScheme.primary,
+                        fontSize = 35.sp
+                    )  //ageInDaysDate
+                    Text( 
+                        text = stringResource(R.string.age_in_days),
+                        color = MaterialTheme.colorScheme.secondary,
+                        fontSize = 18.sp
+                     ) //ageInDaysDateLabel
                 }
             }
         }

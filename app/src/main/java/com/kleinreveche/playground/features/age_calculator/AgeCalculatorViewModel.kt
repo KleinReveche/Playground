@@ -4,6 +4,10 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.widget.Toast
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.CompositeDateValidator
@@ -18,21 +22,14 @@ class AgeCalculatorViewModel {
     private val sdf = SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH)
     private val currentDate = sdf.parse(sdf.format(System.currentTimeMillis()))
     private val currentDateInMinutes = currentDate?.time?.div(60000)
+    private val defaultDateInMinutes = currentDateInMinutes?.minus(17723520)
+    private val defaultDateInHours = defaultDateInMinutes?.div(60)
+    private val defaultDateInDays = defaultDateInHours?.div(24)
 
-    var selectedDate: String = ""
-    var selectedDateInMinutes: String = ""
-    var selectedDateInHours: String = ""
-    var selectedDateInDays: String = ""
-
-    fun initVar(){
-        val defaultDateInMinutes = currentDateInMinutes?.minus(17723520)
-        val defaultDateInHours = defaultDateInMinutes?.div(60)
-        val defaultDateInDays = defaultDateInHours?.div(24)
-
-        selectedDateInMinutes = defaultDateInMinutes.toString()
-        selectedDateInHours = defaultDateInHours.toString()
-        selectedDateInDays = defaultDateInDays.toString()
-    }
+    var selectedDate by mutableStateOf ( "09/13/2003" )
+    var selectedDateInMinutes by mutableStateOf ( defaultDateInMinutes.toString() )
+    var selectedDateInHours by mutableStateOf ( defaultDateInHours.toString() )
+    var selectedDateInDays by mutableStateOf ( defaultDateInDays.toString() )
 
     fun showDatePicker(context: Context) {
 
@@ -56,12 +53,12 @@ class AgeCalculatorViewModel {
 
                         val differenceInMinutes = currentDateInMinutes?.minus(selectedDateInMinutesInPicker)
                         val selectedDateInHoursInPicker = differenceInMinutes?.div(60)
-                        val selectedDateInDaysInPicker = selectedDateInHoursInPicker.div(24)
+                        val selectedDateInDaysInPicker = selectedDateInHoursInPicker?.div(24)
 
-                        selectedDate = selectedDateInPickerFormatted
-                        selectedDateInMinutes = differenceInMinutes.toString()
-                        selectedDateInHours = selectedDateInHoursInPicker.toString()
-                        selectedDateInDays = selectedDateInDaysInPicker.toString()
+                        this.selectedDate = selectedDateInPickerFormatted
+                        this.selectedDateInMinutes = differenceInMinutes.toString()
+                        this.selectedDateInHours = selectedDateInHoursInPicker.toString()
+                        this.selectedDateInDays = selectedDateInDaysInPicker.toString()
                     }
                 }
 
@@ -106,7 +103,7 @@ class AgeCalculatorViewModel {
                 val selectedDateInDays =
                     selectedDateInHours?.div(24)
 
-                val selectedDateFormatted = sdf.format(selectedDate!!).toString()
+                val selectedDateFormatted = sdf.format(selectedDate).toString()
 
                 selectedDate = selectedDateFormatted
                 this.selectedDateInMinutes = differenceInMinutes.toString()
@@ -115,7 +112,7 @@ class AgeCalculatorViewModel {
 
             }
 
-
+        //datePicker.show(supportFragmentManager, "date_picker") 
 
         }
 

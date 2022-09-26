@@ -1,7 +1,6 @@
 package com.kleinreveche.playground.features.tictactoe
 
-import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -17,9 +16,11 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.kleinreveche.playground.R
 import com.kleinreveche.playground.features.tictactoe.engine.GameUtils.PLAYER_O
 import com.kleinreveche.playground.features.tictactoe.engine.GameUtils.PLAYER_X
@@ -51,12 +52,73 @@ fun TicTacAppBar(singlePlayer: Boolean, onCheckedChange: (Boolean) -> Unit) {
 }
 
 @Composable
-fun ResetButton(onClick: () -> Unit) {
+fun StatsCounter(
+    playerXWinCount: Int,
+    playerOWinCount: Int,
+    drawCount: Int,
+    singleplayer: Boolean,
+    showDraw: Boolean
+) {
+    val isSingleplayer = remember { mutableStateOf(singleplayer) }
+    Row(Modifier.padding(start = 16.dp, end = 16.dp)) {
+        Column(
+            Modifier.weight(1f),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = if(isSingleplayer.value) "You" else "Player X",
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+            )
+            Text(
+                text = "$playerXWinCount",
+                fontSize = 32.sp,
+            )
+        }
+        AnimatedVisibility(
+            visible = showDraw,
+            enter = fadeIn() + slideInHorizontally(),
+            exit = fadeOut() + slideOutHorizontally()
+        ) {
+            Column(
+              Modifier.weight(1f),
+            horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Draw",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+                Text(
+                    text = "$drawCount",
+                    fontSize = 30.sp,
+                )
+            }
+        }
+        Column(
+            Modifier.weight(1f),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = if(isSingleplayer.value) "AI" else "Player O",
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+            )
+            Text(
+                text = "$playerOWinCount",
+                fontSize = 32.sp,
+            )
+        }
+    }
+}
+
+@Composable
+fun GameButton(buttonName: String, onClick: () -> Unit) {
     OutlinedButton(onClick = onClick, modifier = Modifier
         .padding(16.dp)
         .height(50.dp)) {
         Text(
-            text = "Restart",
+            text = buttonName,
             style = TextStyle(textAlign = TextAlign.Center)
         )
     }
@@ -101,11 +163,11 @@ fun TicTacToeButton(
             .aspectRatio(1f)
             .border(
                 width = 1.dp,
-                color = MaterialTheme.colorScheme.onBackground.copy(.15f),
+                color = MaterialTheme.colorScheme.onBackground.copy(),
                 shape = CircleShape
             )
             .background(
-                color = MaterialTheme.colorScheme.background,
+                color = MaterialTheme.colorScheme.background.copy(),
                 shape = CircleShape
             )
             .clickable(
@@ -177,6 +239,6 @@ fun ButtonPreview(){
             "O", "O", "X",
             "",  "X", "O"
         )){}
-        ResetButton{}
+        
     }
 }

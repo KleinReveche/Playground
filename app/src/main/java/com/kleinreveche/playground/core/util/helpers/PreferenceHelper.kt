@@ -17,6 +17,10 @@ object PreferenceHelper {
     private fun checkPrefs() {
        checkForPrefs(Preferences.IS_ONBOARDING_DONE, false)
        checkForPrefs(Preferences.MATERIAL_YOU, true)
+       checkForPrefs(Preferences.TTC_PLAYER_WINS, 0)
+       checkForPrefs(Preferences.TTC_AI_WINS, 0)
+       checkForPrefs(Preferences.TTC_DRAWS_COUNT, 0)
+       checkForPrefs(Preferences.TTC_SHOW_DRAWS_COUNT, false)
     }
 
     private fun checkForPrefs(key: String, defaultValue: Any) {

@@ -2,6 +2,7 @@ package com.kleinreveche.playground
 
 import android.app.Application
 import android.content.Context
+import android.widget.Toast
 import com.kleinreveche.playground.core.util.helpers.PreferenceHelper
 import dagger.hilt.android.HiltAndroidApp
 
@@ -25,4 +26,12 @@ class Playground : Application()  {
         PreferenceHelper.init(this)
         //val context: Context = Playground.applicationContext()
     }
+    
+    /** Investigate: NULLPOINTER EXCEPTION
+    fun showToast(message: String) {
+        Toast.makeText(this, message,
+                Toast.LENGTH_SHORT).show()
+    }
+    */
+   
 }

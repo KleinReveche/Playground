@@ -134,4 +134,6 @@
     <string name="dismiss">Dismiss</string>
     <string name="gameover">Game-over!</string>
     <string name="restart">Restart</string>
+    <string name="ttc_reset_multiplayer_stats">Reset Scores</string>
+
 </resources>

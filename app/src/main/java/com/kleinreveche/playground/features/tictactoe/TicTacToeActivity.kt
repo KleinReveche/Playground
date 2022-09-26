@@ -3,6 +3,7 @@ package com.kleinreveche.playground.features.tictactoe
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -11,7 +12,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kleinreveche.playground.R
 import com.kleinreveche.playground.ui.theme.PlaygroundAppTheme
 import kotlinx.coroutines.launch
 
@@ -49,11 +53,43 @@ fun TicTacToe(){
                 verticalArrangement = Arrangement.Center, 
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                AnimatedVisibility(
+                    visible = ticTacToeViewModel.singlePlayer,
+                    enter = fadeIn() + slideInVertically(),
+                    exit = fadeOut() + slideOutVertically()
+                ) {
+                    StatsCounter(
+                        playerXWinCount = ticTacToeViewModel.playerWinCount,
+                        playerOWinCount = ticTacToeViewModel.aiWinCount,
+                        drawCount = ticTacToeViewModel.drawCount,
+                        singleplayer = true,
+                        showDraw = ticTacToeViewModel.showDraw
+                    )
+                    Spacer(modifier = Modifier.height(30.dp))
+                }
+                AnimatedVisibility(
+                    visible = !ticTacToeViewModel.singlePlayer,
+                    enter = fadeIn() + slideInVertically(),
+                    exit = fadeOut() + slideOutVertically()
+                ) {
+                    StatsCounter(
+                        playerXWinCount = ticTacToeViewModel.playerXWinCount,
+                        playerOWinCount = ticTacToeViewModel.playerOWinCount,
+                        drawCount = ticTacToeViewModel.multiplayerDrawCount,
+                        singleplayer = false,
+                        showDraw = ticTacToeViewModel.showDraw
+                    )
+                    Spacer(modifier = Modifier.height(30.dp))
+                }
+
                 ButtonGrid(board = ticTacToeViewModel.board, ticTacToeViewModel::play)
 
-                if (ticTacToeViewModel.isGameOver) {
-
-                    LaunchedEffect(key1 = ticTacToeViewModel.isGameOver) {
+                AnimatedVisibility(
+                    visible = ticTacToeViewModel.isGameOver,
+                    enter = fadeIn() + slideInVertically(),
+                    exit = fadeOut() + slideOutVertically()
+                ) {
+                    LaunchedEffect(ticTacToeViewModel.isGameOver) {
                         scope.launch {
                             val result = snackbarHostState.showSnackbar(
                                 message = "Game-over: ${ticTacToeViewModel.winner}",
@@ -75,9 +111,20 @@ fun TicTacToe(){
                         )
                     }
                 }
-                ResetButton(onClick = ticTacToeViewModel::reset)
+Row(
+    modifier = Modifier.fillMaxWidth(),
+horizontalArrangement = Arrangement.Center
+    ){
+                GameButton(buttonName = stringResource(R.string.restart), onClick = ticTacToeViewModel::reset)
+                AnimatedVisibility(
+                    visible = !ticTacToeViewModel.singlePlayer,
+                    enter = fadeIn() + slideInHorizontally(),
+                    exit = fadeOut() + slideOutHorizontally()
+                ) {
+                    GameButton(buttonName = stringResource(R.string.ttc_reset_multiplayer_stats), onClick = ticTacToeViewModel::resetMultiplayerStats)
+                }
             }
-
+}
         }
     }
 }

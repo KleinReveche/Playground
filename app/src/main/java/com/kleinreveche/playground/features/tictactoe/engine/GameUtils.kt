@@ -1,10 +1,12 @@
 package com.kleinreveche.playground.features.tictactoe.engine
 
 import java.util.*
+import com.kleinreveche.playground.core.util.helpers.*
 
 object GameUtils {
     const val PLAYER_X = "X" //player 1
     const val PLAYER_O = "O" //player 2 or computer
+    
 
     /**
      * Determine if the board is full
@@ -104,9 +106,25 @@ object GameUtils {
     fun gameResult(board: ArrayList<String>, singleMode: Boolean): String {
         when {
             isGameWon(board, PLAYER_X) -> return "${if (singleMode) "You" else "Player X"} Won!"
-            isGameWon(board, PLAYER_O) -> return "${if (singleMode) "Computer" else "Player O"} Won!"
+            isGameWon(board, PLAYER_O) -> return "${if (singleMode) "AI" else "Player O"} Won!"
             isBoardFull(board) -> return "It's a tie!"
         }
         return "Tie"
+    }
+
+    fun saveGameResult(
+        board: ArrayList<String>, 
+        singleMode: Boolean,
+        playerWinCount: Int,
+        aiWinCount: Int,
+        drawCount: Int
+        ) {
+        if(singleMode) {
+            when {
+                isGameWon(board, PLAYER_X) -> PreferenceHelper[Preferences.TTC_PLAYER_WINS] = playerWinCount.plus(1)
+                isGameWon(board, PLAYER_O) -> PreferenceHelper[Preferences.TTC_AI_WINS] = aiWinCount.plus(1)
+                isBoardFull(board) ->  PreferenceHelper[Preferences.TTC_DRAWS_COUNT] = drawCount.plus(1)
+            }
+        }
     }
 }

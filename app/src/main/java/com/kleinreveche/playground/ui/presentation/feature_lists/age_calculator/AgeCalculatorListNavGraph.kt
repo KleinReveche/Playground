@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.kleinreveche.playground.features.age_calculator.AgeCalculator
 import com.kleinreveche.playground.features.age_calculator.AgeCalculatorComposeFeatureRoute
 import com.kleinreveche.playground.features.age_calculator.AgeCalculatorLegacyFeatureRoute
+import com.kleinreveche.playground.ui.model.AgeCalculatorComposeFeature
 import com.kleinreveche.playground.ui.model.AgeCalculatorFeature
 import com.kleinreveche.playground.ui.model.AgeCalculatorLegacyFeature
 import com.kleinreveche.playground.ui.model.AgeCalculatorList
@@ -29,7 +30,7 @@ fun AgeCalculatorListNavGraph() {
                         AgeCalculatorLegacyFeature -> navController.navigate(
                             AgeCalculatorLegacyFeatureRoute
                         )
-                        AgeCalculatorFeature -> navController.navigate(AgeCalculatorComposeFeatureRoute)
+                        AgeCalculatorComposeFeature -> navController.navigate(AgeCalculatorComposeFeatureRoute)
                         else -> throw IllegalArgumentException("Unknown Feature")
                     }
                 },
