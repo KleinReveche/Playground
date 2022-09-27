@@ -2,7 +2,6 @@ package com.kleinreveche.playground.features.tictactoe
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.kleinreveche.playground.core.util.helpers.*
 import com.kleinreveche.playground.features.tictactoe.engine.GameUtils
@@ -13,7 +12,7 @@ import com.kleinreveche.playground.features.tictactoe.engine.GameUtils.isGameWon
 
 class TicTacToeViewModel {
 
-    var singlePlayer by mutableStateOf(true)
+    var singleplayer by mutableStateOf(true)
         private set
 
     var isGameOver by mutableStateOf(false)
@@ -45,7 +44,7 @@ class TicTacToeViewModel {
                 })
                 currentPlayer = PLAYER_O
 
-                if (singlePlayer) {
+                if (singleplayer) {
                     if (!isBoardFull(board) && !isGameWon(board, PLAYER_X)) {
                         val nextMove = GameUtils.computerMove(board)
 
@@ -62,7 +61,7 @@ class TicTacToeViewModel {
                 })
                 currentPlayer = PLAYER_X
 
-                if (singlePlayer) {
+                if (singleplayer) {
                     if (!isBoardFull(board) && !isGameWon(board, PLAYER_O)) {
                         val nextMove = GameUtils.computerMove(board)
 
@@ -77,8 +76,8 @@ class TicTacToeViewModel {
         }
         
         isGameOver = isGameWon(board, PLAYER_X) || isGameWon(board, PLAYER_O) || isBoardFull(board)
-        updateWinCounters(board, singlePlayer)
-        winner = GameUtils.gameResult(board, singlePlayer)
+        updateWinCounters(board, singleplayer)
+        winner = GameUtils.gameResult(board, singleplayer)
     }
 
     fun reset() {
@@ -95,10 +94,10 @@ class TicTacToeViewModel {
     }
     fun updatePlayerMode(singleplayer: Boolean) {
         reset()
-        this.singlePlayer = singleplayer
+        this.singleplayer = singleplayer
     }
 
-    fun updateWinCounters(board: ArrayList<String>, singlePlayer: Boolean) {
+    private fun updateWinCounters(board: ArrayList<String>, singlePlayer: Boolean) {
         GameUtils.saveGameResult(board, singlePlayer, playerWinCount, aiWinCount, drawCount)
         if(singlePlayer) {
             when {

@@ -1,9 +1,9 @@
 package com.kleinreveche.playground
 
 import android.app.Application
-import android.content.Context
 import android.widget.Toast
 import com.kleinreveche.playground.core.util.helpers.PreferenceHelper
+//import com.kleinreveche.playground.core.util.helpers.PreferenceHelper
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
@@ -14,24 +14,20 @@ class Playground : Application()  {
     }
 
     companion object {
-        private var instance: Playground? = null
-
-        fun applicationContext() : Context {
-            return instance!!.applicationContext
-        }
+        lateinit var instance: Playground
+            private set
     }
 
     override fun onCreate() {
         super.onCreate()
-        PreferenceHelper.init(this)
-        //val context: Context = Playground.applicationContext()
+        instance = this
+        PreferenceHelper.initPrefs(this)
     }
-    
-    /** Investigate: NULLPOINTER EXCEPTION
+
     fun showToast(message: String) {
-        Toast.makeText(this, message,
-                Toast.LENGTH_SHORT).show()
+    Toast.makeText(this, message,
+    Toast.LENGTH_SHORT).show()
     }
-    */
-   
+
+
 }

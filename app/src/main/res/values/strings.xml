@@ -135,5 +135,11 @@
     <string name="gameover">Game-over!</string>
     <string name="restart">Restart</string>
     <string name="ttc_reset_multiplayer_stats">Reset Scores</string>
+    <string name="pause">Pause</string>
+    <string name="play">Play</string>
+    <string name="light_mode">Light Mode</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="newtons_timer">Newton\'s Timer</string>
+    <string name="unscramble">Unscramble</string>
 
 </resources>

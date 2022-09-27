@@ -9,7 +9,7 @@ object PreferenceHelper {
     private const val PLAYGROUND_PREFERENCES = "PlaygroundPreferences"
     lateinit var preferences: SharedPreferences
 
-    fun init(context: Context) {
+    fun initPrefs(context: Context) {
         preferences = context.getSharedPreferences(PLAYGROUND_PREFERENCES, Context.MODE_PRIVATE)
         checkPrefs()
     }

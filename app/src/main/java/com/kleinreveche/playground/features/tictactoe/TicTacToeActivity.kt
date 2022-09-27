@@ -41,12 +41,12 @@ fun TicTacToe(){
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
-        TicTacAppBar(ticTacToeViewModel.singlePlayer) {
+        TicTacAppBar(ticTacToeViewModel.singleplayer) {
             ticTacToeViewModel.updatePlayerMode(it)
         }}
     ) {
         it.calculateBottomPadding()
-        // A surface container using the 'background' color from the theme
+        
         Surface(color = MaterialTheme.colorScheme.background) {
             Column(
                 modifier = Modifier.fillMaxSize(),
@@ -54,7 +54,7 @@ fun TicTacToe(){
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 AnimatedVisibility(
-                    visible = ticTacToeViewModel.singlePlayer,
+                    visible = ticTacToeViewModel.singleplayer,
                     enter = fadeIn() + slideInVertically(),
                     exit = fadeOut() + slideOutVertically()
                 ) {
@@ -68,7 +68,7 @@ fun TicTacToe(){
                     Spacer(modifier = Modifier.height(30.dp))
                 }
                 AnimatedVisibility(
-                    visible = !ticTacToeViewModel.singlePlayer,
+                    visible = !ticTacToeViewModel.singleplayer,
                     enter = fadeIn() + slideInVertically(),
                     exit = fadeOut() + slideOutVertically()
                 ) {
@@ -117,7 +117,7 @@ horizontalArrangement = Arrangement.Center
     ){
                 GameButton(buttonName = stringResource(R.string.restart), onClick = ticTacToeViewModel::reset)
                 AnimatedVisibility(
-                    visible = !ticTacToeViewModel.singlePlayer,
+                    visible = !ticTacToeViewModel.singleplayer,
                     enter = fadeIn() + slideInHorizontally(),
                     exit = fadeOut() + slideOutHorizontally()
                 ) {
@@ -125,6 +125,13 @@ horizontalArrangement = Arrangement.Center
                 }
             }
 }
+AnimatedVisibility(
+                    visible = ticTacToeViewModel.singleplayer,
+                    enter = fadeIn() + slideInHorizontally(),
+                    exit = fadeOut() + slideOutHorizontally()
+                ) {
+                    GameButton(buttonName = stringResource(R.string.ttc_reset_multiplayer_stats), onClick = ticTacToeViewModel::resetMultiplayerStats)
+                }
         }
     }
 }

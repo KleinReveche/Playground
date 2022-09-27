@@ -3,14 +3,17 @@ package com.kleinreveche.playground.ui.theme
 import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
+import android.content.res.Configuration
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.BoxWithConstraintsScope
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.kleinreveche.playground.Playground
 import com.kleinreveche.playground.core.util.helpers.PreferenceHelper
 import com.kleinreveche.playground.core.util.helpers.Preferences
 
@@ -42,10 +45,10 @@ fun PlaygroundAppTheme(
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val isBoardingDone = PreferenceHelper[Preferences.MATERIAL_YOU, true]
+    val isMaterialYouEnabled = PreferenceHelper[Preferences.MATERIAL_YOU, true]
     val colorScheme = when {
 
-        isBoardingDone as Boolean && dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+        isMaterialYouEnabled as Boolean && dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
@@ -73,3 +76,12 @@ private tailrec fun Context.findActivity(): Activity =
         is ContextWrapper -> this.baseContext.findActivity()
         else -> throw IllegalArgumentException("Could not find activity!")
     }
+
+fun Context.isDarkModeOn(): Boolean {
+    val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+    return currentNightMode == Configuration.UI_MODE_NIGHT_YES
+}
+
+val isLight = !Playground.instance.isDarkModeOn()
+
+val BoxWithConstraintsScope.isLandscape get() = maxWidth > maxHeight

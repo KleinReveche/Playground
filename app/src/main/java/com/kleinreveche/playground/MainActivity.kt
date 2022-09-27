@@ -18,8 +18,9 @@ import androidx.core.view.WindowCompat
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.kleinreveche.playground.core.util.helpers.PreferenceHelper
 import com.kleinreveche.playground.core.util.helpers.Preferences
-import com.kleinreveche.playground.ui.NavGraph
+import com.kleinreveche.playground.ui.nav.NavGraph
 import com.kleinreveche.playground.ui.onboarding.OnboardingActivity
+//import com.kleinreveche.playground.ui.onboarding.OnboardingActivity
 import com.kleinreveche.playground.ui.theme.PlaygroundAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,20 +30,20 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, true)
-        
+
         setContent {
             PlaygroundAppTheme {
 
                 val systemUiController = rememberSystemUiController()
                 val useDarkIcons = MaterialTheme.colorScheme.isLight()
                 val systemBarColor = MaterialTheme.colorScheme.surface
-               
+
                 SideEffect {
                     systemUiController.setSystemBarsColor(
                         color = systemBarColor,
                         darkIcons = useDarkIcons
                     )
-                    
+
                 }
 
                 Surface(
