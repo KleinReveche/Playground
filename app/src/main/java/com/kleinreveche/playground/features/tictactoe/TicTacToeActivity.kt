@@ -15,8 +15,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.kleinreveche.playground.R
 import com.kleinreveche.playground.ui.theme.PlaygroundAppTheme
+import com.kleinreveche.playground.ui.theme.ThemeUtils
 import kotlinx.coroutines.launch
 
 class TicTacToeActivity : ComponentActivity() {
@@ -89,10 +91,12 @@ fun TicTacToe(){
                     enter = fadeIn() + slideInVertically(),
                     exit = fadeOut() + slideOutVertically()
                 ) {
+val themeUtils: ThemeUtils = viewModel()
                     LaunchedEffect(ticTacToeViewModel.isGameOver) {
                         scope.launch {
                             val result = snackbarHostState.showSnackbar(
-                                message = "Game-over: ${ticTacToeViewModel.winner}",
+                                //message = "Game-over: ${ticTacToeViewModel.winner}",
+                                message = "Dark Mode: ${themeUtils.darkMode}",
                                 actionLabel = "Restart",
                                 withDismissAction = false,
                                 duration = SnackbarDuration.Indefinite

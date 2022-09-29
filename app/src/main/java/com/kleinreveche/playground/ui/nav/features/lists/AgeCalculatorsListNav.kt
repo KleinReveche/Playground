@@ -7,13 +7,16 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.kleinreveche.playground.R
+import com.kleinreveche.playground.ui.nav.startFeature
 import com.kleinreveche.playground.features.age_calculator.*
 import com.kleinreveche.playground.features.age_calculator.legacy.AgeCalculatorComposable
 import com.kleinreveche.playground.features.age_calculator.legacy.AgeCalculatorLegacyComposable
@@ -26,16 +29,15 @@ import com.kleinreveche.playground.ui.theme.settings.SettingsRoute
 import com.kleinreveche.playground.ui.theme.settings.SettingsScreen
 
 @Composable
-fun AgeCalculatorsListNav(
-    navController: NavController,
-    startDestination: String,
-) {
+fun AgeCalculatorsListNav(color: Color = MaterialTheme.colorScheme.background) {
+    val navController = rememberNavController()
     NavHost(
-    navController = navController as NavHostController,
-    startDestination = startDestination
+        navController = navController,
+        startDestination = AgeCalculatorsFeatureListRoute
     ) {
         composable(AgeCalculatorsFeatureListRoute) {
             AgeCalculatorListComponent(
+                color = color,
                 ageCalculatorFeatureList = AgeCalculatorList,
                 ageCalculatorFeatureClick = { ageCalculatorFeatureList: AgeCalculatorsList ->
                     when (ageCalculatorFeatureList) {
@@ -50,7 +52,7 @@ fun AgeCalculatorsListNav(
         }
         composable(AgeCalculatorMaterialFeatureRoute) { AgeCalculatorComposable(navController) }
         composable(AgeCalculatorLegacyFeatureRoute) { AgeCalculatorLegacyComposable(navController) }
-        composable(SettingsRoute) { SettingsScreen(navController) }
+        composable(SettingsRoute) { startFeature({SettingsScreen(navController)}) }
         composable(AgeCalculatorComposeFeatureRoute) { AgeCalculator() }
     }
 
@@ -60,9 +62,11 @@ fun AgeCalculatorsListNav(
 fun AgeCalculatorListComponent(
     ageCalculatorFeatureList: List<AgeCalculatorsList>,
     ageCalculatorFeatureClick: (featureList: AgeCalculatorsList) -> Unit,
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {},
+    color: Color
 ) {
     FeatureScaffold(
+        color = color,
         topBarTitle = stringResource(id = R.string.app_name),
         onClick = onClick
     ) { paddingValues ->

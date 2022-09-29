@@ -69,6 +69,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     implementation 'androidx.activity:activity-compose:1.6.0'
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation 'androidx.compose.runtime:runtime-livedata:1.2.1'
 
     // Test dependencies
     testImplementation 'junit:junit:4.13.2'

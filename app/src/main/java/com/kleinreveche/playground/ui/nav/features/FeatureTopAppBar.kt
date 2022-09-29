@@ -16,11 +16,12 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun FeatureTopAppBar(
     title: String,
+    color: Color,
     scrollBehavior: TopAppBarScrollBehavior? = null,
     onClick: () -> Unit = {}
 ) {
     val backgroundColor = lerp(
-        MaterialTheme.colorScheme.surface,
+        color,
         MaterialTheme.colorScheme.surfaceColorAtElevation(elevation = 3.dp),
         FastOutLinearInEasing.transform(scrollBehavior?.state?.overlappedFraction ?: 0f)
     )

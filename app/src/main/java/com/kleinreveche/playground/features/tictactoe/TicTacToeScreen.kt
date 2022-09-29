@@ -39,7 +39,7 @@ fun TicTacAppBar(singlePlayer: Boolean, onCheckedChange: (Boolean) -> Unit) {
             Row(modifier = Modifier.padding(end = 16.dp)){
                 Text(
                     modifier = Modifier.align(Alignment.CenterVertically),
-                    text = if (checkedState.value) "Single-player" else "Multiplayer"
+                    text = if (checkedState.value) "Singleplayer" else "Multiplayer"
                 )
                 Spacer(modifier = Modifier.width(16.dp))
                 Switch(checked = checkedState.value, onCheckedChange = {

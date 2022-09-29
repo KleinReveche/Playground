@@ -6,10 +6,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Palette
+import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.kleinreveche.playground.R
 import com.kleinreveche.playground.core.util.helpers.Preferences
@@ -17,12 +20,14 @@ import com.kleinreveche.playground.core.util.helpers.rememberBooleanPreference
 import com.kleinreveche.playground.ui.theme.settings.components.SettingBooleanItem
 import com.kleinreveche.playground.ui.theme.settings.components.SettingBooleanReverseItem
 import com.kleinreveche.playground.ui.theme.settings.components.SettingItemCategory
+import com.kleinreveche.playground.ui.theme.ThemeUtils
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
     navController: NavController
 ){
+    val themeUtils: ThemeUtils = viewModel()
     Scaffold(
         topBar = {
             LargeTopAppBar(
@@ -43,9 +48,25 @@ fun SettingsScreen(
             ) {
               SettingBooleanItem(
                   state = rememberBooleanPreference(
+                      key = Preferences.PREFERRED_MODE,
+                      default = true),
+                  onCheckedChange = { themeUtils.updateTheme(it) },
+                  title = {
+                      Text("Dark Mode")
+                      },
+                  icon = {
+                      Icon(Icons.Outlined.DarkMode, null)
+                      },
+                  text = {
+                      Text(stringResource(R.string.settings_material_you_description))
+                      }
+              )
+              SettingBooleanItem(
+                  state = rememberBooleanPreference(
                       key = Preferences.MATERIAL_YOU,
                       default = true
                       ),
+                  onCheckedChange = { themeUtils.updateMaterialYou(it) },
                   title = {
                       Text(stringResource(R.string.settings_material_you))
                       },

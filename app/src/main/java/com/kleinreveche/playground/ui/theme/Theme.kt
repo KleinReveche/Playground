@@ -45,10 +45,9 @@ fun PlaygroundAppTheme(
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val isMaterialYouEnabled = PreferenceHelper[Preferences.MATERIAL_YOU, true]
+    
     val colorScheme = when {
-
-        isMaterialYouEnabled as Boolean && dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }

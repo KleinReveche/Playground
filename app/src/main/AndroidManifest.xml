@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Playground"
         tools:targetApi="33">
         <activity
-            android:name="com.kleinreveche.playground.features.age_calculator.AgeCalculatorLegacyActivity"
+            android:name="com.kleinreveche.playground.features.age_calculator.legacy.AgeCalculatorLegacyActivity"
             android:exported="true"
             android:label="@string/age_calc_legacy"
             android:theme="@style/Theme.Playground">
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.kleinreveche.playground.features.age_calculator.MaterialAgeCalculatorActivity"
+            android:name="com.kleinreveche.playground.features.age_calculator.legacy.MaterialAgeCalculatorActivity"
             android:exported="true"
             android:label="@string/age_calc"
             android:theme="@style/Theme.Playground">

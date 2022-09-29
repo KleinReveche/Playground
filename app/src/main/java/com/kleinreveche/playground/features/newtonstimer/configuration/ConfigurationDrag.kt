@@ -35,7 +35,7 @@ fun Modifier.configurationDragModifier(ballSize: BallSize, onConfigurationAngleC
             onDragStart = { draggedOffset = Offset.Zero },
             onDragEnd = { onDragEnd() },
             onDrag = { change, dragOffsetDelta ->
-                change.consumeAllChanges()
+                change.consume()
                 draggedOffset += dragOffsetDelta
                 val angle = atanDegree(-draggedOffset.x / (ballSize.stringLengthToBallCenter + draggedOffset.y))
                 onConfigurationAngleChanged(angle)

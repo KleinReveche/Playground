@@ -46,8 +46,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.kleinreveche.playground.R
 import com.kleinreveche.playground.features.newtonstimer.TestTags
+import com.kleinreveche.playground.ui.theme.ThemeUtils
 
 @Composable
 fun ButtonsBar(viewModel: TimerViewModel, state: TimerState, modifier: Modifier = Modifier) {
@@ -56,9 +58,10 @@ fun ButtonsBar(viewModel: TimerViewModel, state: TimerState, modifier: Modifier 
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically
     ) {
+        val theme: ThemeUtils = viewModel()
         DarkModeToggleButton(
-            darkMode = viewModel.darkMode,
-            onDarkModeChanged = { viewModel.darkMode = it },
+            darkMode = theme.darkMode,
+            onDarkModeChanged = { theme.darkMode = it },
             modifier = Modifier.weight(1f)
         )
 

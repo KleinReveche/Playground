@@ -39,10 +39,15 @@ class DiceRollerActivity : ComponentActivity() {
 @Preview
 @Composable
 fun DiceRollerApp() {
-    DiceWithButtonAndImage(modifier = Modifier
-        .fillMaxSize()
-        .wrapContentSize(Alignment.Center)
-    )
+    Surface(
+          modifier = Modifier.fillMaxSize(),
+          color = MaterialTheme.colorScheme.background
+        ) {
+        DiceWithButtonAndImage(modifier = Modifier
+            .fillMaxSize()
+            .wrapContentSize(Alignment.Center)
+        )
+    }
 }
 
 @Composable

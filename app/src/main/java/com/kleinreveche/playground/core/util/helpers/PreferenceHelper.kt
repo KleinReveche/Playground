@@ -21,6 +21,8 @@ object PreferenceHelper {
        checkForPrefs(Preferences.TTC_AI_WINS, 0)
        checkForPrefs(Preferences.TTC_DRAWS_COUNT, 0)
        checkForPrefs(Preferences.TTC_SHOW_DRAWS_COUNT, false)
+       //checkForPrefs(Preferences.PREFERRED_MODE, PreferredMode.THEME_AUTO)
+         checkForPrefs(Preferences.PREFERRED_MODE, true)
     }
 
     private fun checkForPrefs(key: String, defaultValue: Any) {

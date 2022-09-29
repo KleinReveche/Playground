@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 fun SettingBooleanItem(
     modifier: Modifier = Modifier,
     state: MutableState<Boolean>,
+    onCheckedChange: (Boolean) -> Unit,
     icon: (@Composable () -> Unit)? = null,
     title: @Composable () -> Unit,
     text: (@Composable () -> Unit)? = null,
@@ -19,7 +20,10 @@ fun SettingBooleanItem(
         title = title,
         text = text,
         action = {
-            Switch(checked = state.value, onCheckedChange = { state.value = it })
+            Switch(checked = state.value, onCheckedChange = { 
+                state.value = it 
+                onCheckedChange(it)
+            })
         },
         onClick = {
             state.value = !state.value
@@ -41,7 +45,7 @@ fun SettingBooleanReverseItem(
         title = title,
         text = text,
         action = {
-            Switch(checked = !state.value, onCheckedChange = { state.value = it })
+            Switch(checked = state.value, onCheckedChange = { state.value = it })
         },
         onClick = {
             state.value = !state.value
